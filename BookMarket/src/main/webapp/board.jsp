@@ -6,19 +6,19 @@
 </head>
 <body>
 
-	<div class = "container py-4">
+	<div class = "container py-4" >
 		<%@ include file = "menu.jsp" %>
 		<h1>자유게시판.</h1>
-		<table>
-			<tr>
+		<table class = "table text-center text-align px-4">
+			<tr class = "border-bottom fw-bold" style = "height : 40px;">
 				<td>No.</td><td>제목</td><td>작성자</td>
 			</tr>	
 			<c:forEach var="no" begin="1" end="10" step="1">
-			<tr>
-				<td><c:out value = "${no }"/></td>
-				<td><c:out value = "제목${no }"/></td>
-				<td><c:out value = "홍길동" /></td>
-			</tr>
+				<tr class = "border-bottom ">
+					<td><c:out value = "${no }"/></td>
+					<td><c:out value = "제목${no }"/></td>
+					<td><c:out value = "홍길동" /></td>
+				</tr>
 			</c:forEach>
 		</table>
 		
