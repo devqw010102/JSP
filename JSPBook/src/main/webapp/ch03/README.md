@@ -23,3 +23,17 @@
 | isErrorPage | 현재 JSP 페이지가 오류 페이지인지 여부를 설정 | false |
 | isELIgnored | 현재 JSP 페이지의 표현 언어(EL) 지원 여부를 설정 | false |
 | isScriptingEnabled | 현재 JSP 페이지의 스크립트 태그 사용 여부를 설정 |  |
+
+#### include 디렉티브 태그
+<pre>
+  <code>
+    <%@ include file = "파일명" %>
+  </code>
+</pre>
+
+#### taglib 디렉티브 태그
+<pre>
+  <code>
+    <%@ taglib uri = "경로" prefix = "태그 식별자" %>
+  </code>
+</pre>
