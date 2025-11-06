@@ -18,3 +18,15 @@
 | attribute | 동적으로 정의된 XML 요소의 속성 설정|
 | body | 동적으로 정의된 XML 요소의 몸체 설정|
 | text | JSP 페이지 및 문서에서 템플릿 텍스트 작성 |
+
+##### 화면, 서버 이동
+<pre>
+  화면 --> 화면 : a
+
+  화면 --> 서버 : form, a
+
+  서버 --> 화면 : forward Action tag
+
+  서버 --> 서버 : redirect
+  
+</pre>
