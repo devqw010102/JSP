@@ -9,17 +9,29 @@ public class Board implements Serializable {
 	private String title;
 	private String name;
 	private String date;
+	private String detail;
+	private String boardNo;
 	
 	public Board() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Board(String title, String name, String date) {
+	public Board(String boardNo, String title, String name, String date, String detail) {
 		super();
+		this.boardNo = boardNo;
 		this.title = title;
 		this.name = name;
 		this.date = date;
+		this.detail = detail;
+	}
+	
+	public String getBoardNo() {
+		return boardNo;
+	}
+
+	public void setBoardNo(String boardNo) {
+		this.boardNo = boardNo;
 	}
 
 	public String getTitle() {
@@ -44,6 +56,14 @@ public class Board implements Serializable {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 }
 

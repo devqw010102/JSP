@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "dto.Board" %>
-<jsp:useBean id = "BoardDAO" class = "dao.BoardRepository" scope = "session" />
+<jsp:useBean id = "boardDAO" class = "dao.BoardRepository" scope = "session" />
 <html>
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,16 +24,16 @@
 				<th class ="col">No.</th><th class ="col text-start">제목</th><th>작성자</th><th>작성일자</th>
 			</tr>	
 			<%
-				ArrayList<Board> listOfBoard = BoardDAO.getAllBoard();
+				ArrayList<Board> listOfBoard = boardDAO.getAllBoard();
 				request.setAttribute("listOfBoard", listOfBoard);
 			%>
 			
-			<c:forEach items = "${listOfBoard}" var = "item" varStatus = "status">
+			<c:forEach items = "${listOfBoard}" var = "board" varStatus = "status">
 				<tr class = "border-bottom">
 					<td><c:out value = "${status.count }"/></td>
-					<td class = "text-start"><c:out value = "${item.getTitle()}" /></td>
-					<td><c:out value = "${item.getName()}" /></td>
-					<td><c:out value = "${item.getDate()}" /></td>
+					<td class = "text-start"><a href = "./boardDetail.jsp?id=${board.getBoardNo() }"> <c:out value = "${board.getTitle()}" /></a>	</td>
+					<td><c:out value = "${board.getName()}" /></td>
+					<td><c:out value = "${board.getDate()}" /></td>
 				</tr>
 
 			</c:forEach>

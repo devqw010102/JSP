@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "dto.Book" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id = "bookDAO" class = "dao.BookRepository" scope = "session" />
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,15 @@
 		</div>
 		
 		<%
+			// ArrayList에 있는 listOfBooks 변수를 forEach에 사용 못하는 이유는
+			// listOfBooks 변수가 지역변수이기 때문에, ${listOfBooks}에 인식하지 못함
 			ArrayList<Book> listOfBooks = bookDAO.getAllBooks();
+			
+			// 따라서 아래와 같이 request로 저장하여 ${listOfBooks}에서도 사용할 수 있게 해야함.
+			// JSTL forEach로 변경하기 위해서 setAttribute로 배열에 있는 데이터를
+			// 안전하게 book.jsp로 가져와야 함
+			
+			// request.setAttribute("listOfBooks", listOfBooks);
 		%>
 		
 		<div class = "row align-items-md-stretch text-center">
@@ -35,12 +44,26 @@
 					<br><%= book.getPublisher() %> | <%= book.getReleaseDate() %>
 					<p> <%= book.getDescription().substring(0, 60) %>...
 					<p> <%= book.getUnitPrice() %>원
+					<p> <a href = "./book.jsp?id=<%=book.getBookId() %>" class = "btn btn-secondary" role = "button">상세 정보 &raquo;</a>
 				</div>		
 			</div>
 			
 			<%
 				}
 			%>
+			<!--  
+			<c:forEach var = "book" items = "${listOfBooks }">
+				<div class = "col-md-4">
+					<div class = "h-100 p-2">
+						<h5><b>${book.name }</b></h5>
+						<p>${book.author }</p>
+						<br> ${book.publisher } | ${book.releaseDate }
+						<p>${book.description.substring(0, 60) }...</p>
+						<p>${book.unitPrice }원
+					</div>
+				</div>
+			</c:forEach>
+			-->
 		</div>
 		<%@ include file = "footer.jsp" %>
 	</div>
