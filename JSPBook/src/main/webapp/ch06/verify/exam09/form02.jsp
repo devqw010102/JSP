@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action = "./form01_process.jsp" method = "post">
+	<form method = "post" action = "form02_process.jsp">
 		<p> 이름 : <input type = "text" name = "name">
 		<p> 주소 : <input type = "text" name = "addr">
 		<p> 이메일 : <input type = "text" name = "email">
