@@ -46,31 +46,8 @@
 			</tr>
 		</table>
 		
-		<!-- 
-		<table class = "table text-center text-align">
-			<tr class = "border-bottom">
-				<th class = "col text-start">제목</th>
-				<th class = "col">내용</th>
-				<th>작성자</th>
-				<th>작성일</th>
-			</tr>
-			<tr class = "border-bottom">
-				<td><%= board.getTitle() %> </td>
-				<td><%= board.getDetail() %></td>
-				<td><%= board.getName() %></td>
-				<td><%= board.getDate() %></td>
-			</tr>
-		</table>
-		 -->
-		
 		<div class = "row align-items-md-stretch">
 			<div class = "col-md-12">
-			<!-- 
-				<h3><b>제목 : </b> </h3>
-				<p><b>내용 : </b>  <%= board.getDetail() %></p>
-				<p><b>글쓴이 : </b> <%= board.getName() %></p>
-				<p><b>작성일 : </b> <%= board.getDate() %></p>
-				 -->
 				<a href = "./board.jsp" class = "btn btn-secondary">게시판 목록 &raquo;</a>
 			</div>
 		</div>

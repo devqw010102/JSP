@@ -1,12 +1,12 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "java.util.ArrayList" %>
+<%@ page contentType = "text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
 <%@ page import = "dto.Book" %>
+<%@ page import = "dao.BookRepository" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id = "bookDAO" class = "dao.BookRepository" scope = "session" />
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel = "stylesheet" href = "./resources/css/bootstrap.min.css" />
 	<title>도서 목록</title>
 </head>
 <body>
@@ -21,9 +21,13 @@
 		</div>
 		
 		<%
+			BookRepository dao = BookRepository.getInstance();
+			ArrayList<Book> listOfBooks = dao.getAllBooks();
+			
+			
 			// ArrayList에 있는 listOfBooks 변수를 forEach에 사용 못하는 이유는
 			// listOfBooks 변수가 지역변수이기 때문에, ${listOfBooks}에 인식하지 못함
-			ArrayList<Book> listOfBooks = bookDAO.getAllBooks();
+			// ArrayList<Book> listOfBooks = bookDAO.getAllBooks();
 			
 			// 따라서 아래와 같이 request로 저장하여 ${listOfBooks}에서도 사용할 수 있게 해야함.
 			// JSTL forEach로 변경하기 위해서 setAttribute로 배열에 있는 데이터를
@@ -32,6 +36,10 @@
 			// request.setAttribute("listOfBooks", listOfBooks);
 		%>
 		
+		<div class = "col-md-4">
+			<p> <a href = "./addBook.jsp" class = "btn btn-primary" role = "button">도서 등록 &raquo;</a>
+		</div>
+		
 		<div class = "row align-items-md-stretch text-center">
 			<%
 				for(int i = 0; i < listOfBooks.size(); i++) {
@@ -39,10 +47,13 @@
 			%>
 			<div class = "col-md-4">
 				<div class = "h-100 p-2">
+					<img src = "./resources/images/<%= book.getFilename() %>" style = "width : 250px; height : 350px" />
 					<h5><b><%= book.getName() %></b></h5>
 					<p> <%= book.getAuthor() %>
 					<br><%= book.getPublisher() %> | <%= book.getReleaseDate() %>
-					<p> <%= book.getDescription().substring(0, 60) %>...
+					<p> <%= book.getDescription().length() > 60 
+        					? book.getDescription().substring(0, 60) + "..." : book.getDescription() %>
+					</p>
 					<p> <%= book.getUnitPrice() %>원
 					<p> <a href = "./book.jsp?id=<%=book.getBookId() %>" class = "btn btn-secondary" role = "button">상세 정보 &raquo;</a>
 				</div>		
