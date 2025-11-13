@@ -12,6 +12,8 @@ public class Board implements Serializable {
 	private String detail;
 	private String boardNo;
 	
+	private String filename;
+	
 	public Board() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -64,6 +66,14 @@ public class Board implements Serializable {
 
 	public void setDetail(String detail) {
 		this.detail = detail;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 }
 

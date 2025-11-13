@@ -6,6 +6,11 @@ import dto.Board;
 public class BoardRepository {
 
 	private ArrayList<Board> listOfBoards = new ArrayList<Board>();
+	private static BoardRepository instance = new BoardRepository();
+	
+	public static BoardRepository getInstance() {
+		return instance;
+	}
 	
 	public BoardRepository() {
 		Board board1 = new Board("1", "자바마스터 책 추천합니다.", "홍길동", "2025-11-06", "게시판 첫번째 내용");
@@ -35,5 +40,9 @@ public class BoardRepository {
 		}
 		
 		return boardById;
+	}
+	
+	public void addBoard(Board board) {
+		listOfBoards.add(board);
 	}
 }

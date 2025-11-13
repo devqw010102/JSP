@@ -18,6 +18,7 @@ public class Book implements Serializable {
 	private String condition;
 	
 	private String filename;
+	private int quantity;
 	
 	public Book() {
 		super();
@@ -117,6 +118,14 @@ public class Book implements Serializable {
 
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	

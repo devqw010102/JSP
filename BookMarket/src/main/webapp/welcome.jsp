@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel = "stylesheet" href = "./resources/css/bootstrap.min.css" />
 	<title>Welcome</title>
 </head>
 <body>

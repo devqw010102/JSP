@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "dto.Board" %>
-<jsp:useBean id = "boardDAO" class = "dao.BoardRepository" scope = "session" />
+<%@ page import = "dao.BoardRepository" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +21,8 @@
 		
 		<%
 			String id = request.getParameter("id");
-			Board board = boardDAO.getBoardById(id);
+			BoardRepository dao = BoardRepository.getInstance();
+			Board board = dao.getBoardById(id);
 		%>
 		
 		<table class = "table table-striped">
@@ -29,12 +30,17 @@
 				<th colspan='2'><%= id %></th>
 			</tr>
 			<tr>
-				<th class = "col text-start">제목</th>
+				<th class = "col-1 text-start">제목</th>
 				<td><%= board.getTitle() %> </td>
 			</tr>
 			<tr>
 				<th class = "col">내용</th>
-				<td><%= board.getDetail() %></td>
+				<td>
+					<p> <%= board.getDetail() %></p>
+					<% if(board.getFilename() != null){ %>
+					<img src = "./resources/boardImages/<%= board.getFilename() %>" style = "width : 100px; height : 100px " />
+					<% } %>
+				</td>
 			</tr>
 			<tr>
 				<th>작성자</th>
