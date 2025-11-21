@@ -1,0 +1,7 @@
+CREATE TABLE Member(
+    id VARCHAR2(20) PRIMARY KEY,
+    passwd VARCHAR2(20),
+    name VARCHAR2(30)
+);
+
+SELECT * FROM MEMBER;
